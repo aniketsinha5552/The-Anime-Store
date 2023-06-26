@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes,Route ,Navigate} from 'react-router-dom';
+import {Home}  from './pages/Home';
+import Checkout from './pages/Checkout';
+import { Anime } from './pages/Anime';
+import { Product } from './pages/Product';
+import { Login } from './pages/Login';
+import Header from './components/Header';
 
 function App() {
+  const user= true
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="p-0 m-0">
+      <Router>
+        <Header/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/anime/:id" element={<Anime />} />
+          <Route path="/login" element={user? <Navigate to="/"/>: <Login/>} />
+          <Route path="/product/:id" element={<Product />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
