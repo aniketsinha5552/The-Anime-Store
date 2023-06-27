@@ -8,16 +8,16 @@ const cartSlice = createSlice({
         total: 0
     },
     reducers: {
-        addProduct: (state, action) => {
-            state.products.push(action.payload.product);
+        addProduct: (state:any, action:any) => {
+            state.products.push(action?.payload?.product);
             state.quantity += 1;
-            state.total += action.payload.price;
+            state.total += action?.payload?.price;
         },
-        deleteProduct: (state, action) => {
-            const index = state.products.findIndex(product => product.id === action.payload.id);
+        deleteProduct: (state:any, action:any) => {
+            const index = state.products.findIndex((product:any) => product?.id === action.payload.id);
             state.products.splice(index, 1);
             state.quantity -= 1;
-            state.total -= state.products[index]?.price?? 0;
+            state.total -= state?.products[index]?.price?? 0;
         }
     }
 });

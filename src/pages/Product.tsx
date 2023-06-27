@@ -21,8 +21,13 @@ export const Product = () => {
   }, [])
 
   const addToCart = () => {
+    const cartProduct:any= {
+      product: product,
+      quantity:1,
+      price:product.price
+    }
     dispatch(
-      addProduct({product,quantity:1,price:product.price})
+      addProduct(cartProduct)
     )
   }
 

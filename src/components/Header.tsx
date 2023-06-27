@@ -2,13 +2,24 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../redux/userRedux";
 
 const Header = () => {
-  const navigate = useNavigate();
+  const user = useSelector((state: any) => state.user.currentUser);
   const cart = useSelector((state: any) => state.cart);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const quantity = cart.quantity;
   console.log(cart);
-  const user= true
+  
+  const logout = () => {
+    dispatch(
+      logoutUser()
+    )
+    navigate(`/login`)
+  }
+  
   return (
     <div className="bg-slate-200 flex flex-row justify-between p-2 align-middle">
       <p
@@ -32,7 +43,7 @@ const Header = () => {
         <button className="p-2">
           <Icon icon="mdi:user" />
         </button>
-        <button onClick={() => navigate(`/login`)} className="p-2">
+        <button onClick={logout} className="p-2">
           {user ? <Icon icon="mdi:logout" /> : <Icon icon="mdi:login" />}
         </button>
       </div>
