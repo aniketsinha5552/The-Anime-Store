@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../redux/userRedux";
+import { emptyCart } from "../redux/cartRedux";
 
 const Header = () => {
   const user = useSelector((state: any) => state.user.currentUser);
@@ -12,14 +13,19 @@ const Header = () => {
   const navigate = useNavigate();
   const quantity = cart.quantity;
   console.log(cart);
-  
+
   const logout = () => {
-    dispatch(
-      logoutUser()
-    )
-    navigate(`/login`)
-  }
-  
+    let confirmLogout = window.confirm("Are you sure you want to logout?");
+    if (!confirmLogout) return;
+    dispatch(logoutUser());
+    dispatch(emptyCart());
+    navigate(`/login`);
+  };
+
+  const navigateToUser = () => {
+    navigate(`/user`);
+  };
+
   return (
     <div className="bg-slate-200 flex flex-row justify-between p-2 align-middle">
       <p
@@ -37,10 +43,12 @@ const Header = () => {
           />
         </p>
         <button onClick={() => navigate(`/checkout`)} className="p-2 relative">
-          <div className="absolute top-0 right-0 text-[10px] bg-red-600 text-white rounded-lg p-0 w-4 h-4">{quantity}</div>
+          <div className="absolute top-0 right-0 text-[10px] bg-red-600 text-white rounded-lg p-0 w-4 h-4">
+            {quantity}
+          </div>
           <Icon icon="mdi:cart" />
         </button>
-        <button className="p-2">
+        <button className="p-2" onClick={navigateToUser}>
           <Icon icon="mdi:user" />
         </button>
         <button onClick={logout} className="p-2">

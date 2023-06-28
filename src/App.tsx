@@ -6,6 +6,7 @@ import { Product } from './pages/Product';
 import { Login } from './pages/Login';
 import Header from './components/Header';
 import { useSelector } from 'react-redux';
+import { User } from './pages/User';
 
 function App() {
   const user = useSelector((state:any) => state.user.currentUser)
@@ -19,6 +20,7 @@ function App() {
           <Route path="/anime/:id" element={<Anime />} />
           <Route path="/login" element={user? <Navigate to="/"/>: <Login/>} />
           <Route path="/product/:id" element={<Product />} />
+          <Route path="/user" element={<User />} />
         </Routes>
       </Router>
     </div>
