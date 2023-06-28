@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { login } from '../redux/apiCalls';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { publicRequest } from '../requestMethods';
 
 export const Login = () => {
   const dispatch:any = useDispatch()
@@ -18,8 +19,24 @@ export const Login = () => {
           password:data.password
       }) 
   }
-  const onRegisterSubmit = (data:any) => {
-    alert(JSON.stringify(data))
+  const onRegisterSubmit = async(data:any) => {
+    if(data.password !== data.confirmPass){
+        alert("Passwords do not match")
+        return;
+    }
+    const newUser = {
+        username:data.username,
+        email:data.email,
+        password:data.password
+    }
+    try{
+        const res = await publicRequest.post("/register", newUser);
+        onLoginSubmit(newUser)
+    }
+    catch(err){
+        console.log(err)
+    }
+
 }
   return (
     <div className='flex justify-center items-center h-screen'>
