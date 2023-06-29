@@ -9,7 +9,7 @@ const aot = require("../assets/aot.jpg");
 const death = require("../assets/deathnote.jpg");
 const one = require("../assets/onepiece.jpg");
 
-const anime = [
+export const animes = [
   {
     id: 1,
     name: "Demon Slayer",
@@ -39,7 +39,7 @@ export const Home = () => {
       <div className="flex flex-row justify-evenly p-2" id="nav">
           <select >
            <option value={0}>Shop By Anime</option>
-            {anime.map((item) => {
+            {animes.map((item) => {
               return (
                 <option key={item.id} value={item.id}>{item.name}</option>
               )
@@ -54,7 +54,7 @@ export const Home = () => {
           </select>
       </div>
       <div>
-        <Carousel anime={anime} />
+        <Carousel anime={animes} />
         <Slider/>
       </div>
       <h4>Footer</h4>

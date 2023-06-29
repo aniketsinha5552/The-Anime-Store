@@ -7,9 +7,11 @@ import { Login } from './pages/Login';
 import Header from './components/Header';
 import { useSelector } from 'react-redux';
 import { User } from './pages/User';
+import { Admin } from './pages/Admin';
 
 function App() {
-  const user = useSelector((state:any) => state.user.currentUser)
+  const user = useSelector((state:any) => state.user?.currentUser?.user)
+
   return (
     <div className="p-0 m-0">
       <Router>
@@ -21,6 +23,7 @@ function App() {
           <Route path="/login" element={user? <Navigate to="/"/>: <Login/>} />
           <Route path="/product/:id" element={<Product />} />
           <Route path="/user" element={<User />} />
+          <Route path="/admin" element={user?.isAdmin? <Admin/> :<Navigate to="/"/>}/>
         </Routes>
       </Router>
     </div>
