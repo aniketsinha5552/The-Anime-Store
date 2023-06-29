@@ -7,4 +7,4 @@
 ## Contribution Guidelines
 * Commit messages: Use emoji to indicate the type of change.
   
-  👶🏻: new feature, 🪲: Bug fix, ⬆️: enhancement ..
+  🆕: new feature, 🪲: Bug fix, ⬆️: enhancement ..
