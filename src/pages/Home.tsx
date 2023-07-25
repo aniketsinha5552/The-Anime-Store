@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../components/Header";
 import { Carousel } from "../components/Carousel";
 import { Slider } from "../components/Slider";
 import { useEffect, useState } from "react";
