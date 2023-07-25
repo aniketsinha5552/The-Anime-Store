@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { userRequest } from "../requestMethods";
-import { animes } from "./Home";
 
 const tabButtonStyle =
   "bg-slate-400 hover:bg-slate-500 text-white font-bold py-2 px-4 rounded-full m-2";
@@ -34,12 +33,18 @@ const RenderUsers = () => {
 
 const RenderProducts = () => {
   const [allProducts, setAllProducts] = useState([]);
+  const [animes, setAnimes] = useState([]);
+  const getAllAnimes = async () => {
+    const res = await userRequest.get("/animes");
+    setAnimes(res.data);
+  };
   const getAllProducts = async () => {
     const res = await userRequest.get("/products/");
     setAllProducts(res.data);
   };
   useEffect(() => {
     getAllProducts();
+    getAllAnimes();
   }, []);
   const inputStyle= "border-slate-500 border-2 mb-1 p-2 rounded-md"
   return (
@@ -53,11 +58,11 @@ const RenderProducts = () => {
         <input className={inputStyle} type="text" placeholder="categories" />
         <input className={inputStyle} type="text" placeholder="price" />
         <select className={inputStyle}>
-          <option value={0}>Anime</option>
-          {animes.map((item) => {
+          {/* <option value={0}>Anime</option> */}
+          {animes.map((item:any) => {
             return (
               <option key={item.id} value={item.id}>
-                {item.name}
+                {item.title}
               </option>
             );
           })}

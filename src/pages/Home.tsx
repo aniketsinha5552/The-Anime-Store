@@ -2,46 +2,32 @@ import React from "react";
 import Header from "../components/Header";
 import { Carousel } from "../components/Carousel";
 import { Slider } from "../components/Slider";
+import { useEffect, useState } from "react";
+import { publicRequest } from "../requestMethods";
 
-
-const demon = require("../assets/demon.jpg");
-const aot = require("../assets/aot.jpg");
-const death = require("../assets/deathnote.jpg");
-const one = require("../assets/onepiece.jpg");
-
-export const animes = [
-  {
-    id: 1,
-    name: "Demon Slayer",
-    image: demon,
-  },
-  {
-    id: 2,
-    name: "Attack On Titan",
-    image: aot,
-  },
-  {
-    id: 3,
-    name: "Death Note",
-    image: death,
-  },
-  {
-    id: 4,
-    name: "One Piece",
-    image: one,
-  },
-]
 
 export const Home = () => {
+  const [animeList, setAnimeList] = useState<any>([])
+  const getAmineList = async() => {
+    try {
+      const res = await publicRequest.get("/animes")
+      setAnimeList(res.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(() => {
+    getAmineList()
+  }, [])
   return (
     <div>
       {/* <Header /> */}
       <div className="flex flex-row justify-evenly p-2" id="nav">
           <select >
            <option value={0}>Shop By Anime</option>
-            {animes.map((item) => {
+            {animeList.map((item:any) => {
               return (
-                <option key={item.id} value={item.id}>{item.name}</option>
+                <option key={item.id} value={item.id}>{item.title}</option>
               )
             })}
           </select>
@@ -54,7 +40,7 @@ export const Home = () => {
           </select>
       </div>
       <div>
-        <Carousel anime={animes} />
+        <Carousel anime={animeList} />
         <Slider/>
       </div>
       <h4>Footer</h4>

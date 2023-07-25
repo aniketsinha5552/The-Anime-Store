@@ -67,7 +67,7 @@ export const Slider = () => {
             return (
               <div
                 key={idx}
-                className="h-[300px] min-w-[200px] bg-slate-200 m-2 rounded-lg border-2 border-slate-400"
+                className="h-[300px] min-w-[200px] bg-slate-200 m-2 rounded-lg border-2 border-slate-400 hover:scale-105 transition duration-500 ease-in-out"
               >
                 <img
                   onClick={() => navigate(`/product/${item._id}`)}
