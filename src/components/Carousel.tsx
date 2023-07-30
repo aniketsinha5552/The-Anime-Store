@@ -2,8 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const carouselStyle = {
-  // backgroundImage: "url(https://images8.alphacoders.com/131/1318148.png)",
- backgroundColor: "#4a5568",
+  backgroundImage: "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",

@@ -5,6 +5,7 @@ import axios from "axios";
 import { publicRequest } from "../requestMethods";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
+import Card from "./Card";
 
 export const Slider = () => {
   const navigate = useNavigate();
@@ -65,25 +66,7 @@ export const Slider = () => {
           id="slider"
         >
           {products.map((item: any, idx: any) => {
-            return (
-              <div
-                key={idx}
-                className="h-[300px] min-w-[200px] bg-slate-200 m-2 rounded-lg border-2 border-slate-400 hover:scale-105 transition duration-500 ease-in-out"
-              >
-                <img
-                  onClick={() => navigate(`/product/${item._id}`)}
-                  className="h-[210px] w-full rounded-t-lg"
-                  src={item.img}
-                />
-                <p className="text-center mt-1">{item.title}</p>
-                <div className="flex flex-row justify-between mt-1 pr-1 pl-1">
-                  <p>Rs. {item.price}</p>
-                  <button className="p-2" onClick={()=>addToCart(item)}>
-                    <Icon icon="mdi:cart" />
-                  </button>
-                </div>
-              </div>
-            );
+            return <Card key={idx} item={item} />;
           })}
         </div>
         <button

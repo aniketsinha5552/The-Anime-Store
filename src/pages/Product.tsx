@@ -40,7 +40,7 @@ export const Product = () => {
           <h1 className='text-2xl text-center mb-10'>{product.title}</h1>
           <h2 className='text-xl mb-5'><strong>Price:</strong> Rs. {product.price}</h2>
           <p className='text-lg mb-5'><strong>Description:</strong> {product.desc}</p> 
-         {product.color && <p className='text-lg mb-5'><strong>Color:</strong> <span className="h-10 w-10">{product.color}</span></p> }
+         {product.color && <p className='text-lg mb-5'><strong>Color:</strong> <span style={{color:product.color,backgroundColor:product.color,padding:"2px"}}>{product.color}</span></p> }
           {product.size &&<p className='text-lg mb-5'><strong>Size:</strong> {product.size}</p> }
 
           <p className='text-lg bg-red-500 rounded-md w-fit p-2 mb-5 text-white'>{product.anime}</p> 
