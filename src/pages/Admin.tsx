@@ -34,7 +34,7 @@ const RenderUsers = () => {
 
 const RenderProducts = () => {
   const inputStyle= "border-slate-500 border-2 mb-1 p-2 rounded-md"
-  const {register, handleSubmit,reset} = useForm()
+  const {register, handleSubmit,reset,getValues} = useForm()
   const [allProducts, setAllProducts] = useState([]);
   const [animes, setAnimes] = useState([]);
   const getAllAnimes = async () => {
@@ -58,11 +58,26 @@ const RenderProducts = () => {
       img:data.img,
       categories:[data.category],
       price:data.price,
-      anime_id:data.animeId
+      anime:data.anime
     }
     const res = await userRequest.post("/products/",newProduct)
     console.log(res)
     alert("Product Added")
+  }
+  const [showPrev, setShowPrev] = useState(false);
+  const Preview = () => {
+      const {title,desc,img,category,price,anime} = getValues()
+      return(
+        <div className="flex flex-col m-1 mt-2 p-1 w-[500px]">
+          <p className="text-xl mb-2 bg-slate-200 w-fit p-1 rounded-md">Preview</p>
+          <p className="text-l mb-2  w-fit p-1 rounded-md">Title: {title}</p>
+          <p className="text-l mb-2  w-fit p-1 rounded-md">Desc: {desc}</p>
+          <img className="w-1/2" src={img} alt="" />
+          <p className="text-l mb-2 w-fit p-1 rounded-md">Categories: {category}</p>
+          <p className="text-l mb-2 w-fit p-1 rounded-md">Price: {price}</p>
+          <p className="text-l mb-2 w-fit p-1 rounded-md">Anime: {anime}</p>
+        </div>
+      )
   }
   
   return (
@@ -75,20 +90,21 @@ const RenderProducts = () => {
         <input className={inputStyle} type="text" placeholder="img" {...register("img",{required:true})}/>
         <input className={inputStyle} type="text" placeholder="categories" {...register("category",{required:true})}/>
         <input className={inputStyle} type="text" placeholder="price" {...register("price",{required:true})}/>
-        <select className={inputStyle} {...register("animeId",{required:true})}>
+        <select className={inputStyle} {...register("anime",{required:true})}>
           {/* <option value={0}>Anime</option> */}
           {animes.map((item:any) => {
             return (
-              <option key={item._id} value={item._id}>
+              <option key={item._id} value={item.title}> 
                 {item.title}
               </option>
             );
           })}
         </select>
-        <button className="bg-green-800 rounded-md text-white h-9">Add</button>
+        <button type="submit" className="bg-green-800 rounded-md text-white h-9">Add</button>
+        <button type="button" className="bg-blue-800 rounded-md text-white h-9" onClick={()=>setShowPrev(prev=>!prev)}>{showPrev?"Hide" : "Show"} Preview</button>
       </form>
       <div>
-        Preview
+        {showPrev && <Preview/> }
       </div>
       </div>
       <p className="text-xl m-2 bg-blue-300 w-fit p-1 rounded-md">All Products</p>

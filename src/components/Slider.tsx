@@ -41,12 +41,13 @@ export const Slider = () => {
     dispatch(
       addProduct(cartProduct)
     )
+    alert("Product Added")
   }
   return (
     <div className="ml-3 mr-3 mt-5">
       <div className="flex flex-row justify-between ml-5 mr-5">
-        <p className="text-2xl font-bold">Trending</p>
-        <button>View all</button>
+        {/* <p className="text-2xl font-bold">Trending</p> */}
+        {/* <button>View all</button> */}
       </div>
       <div className="flex flex-row relative w-full bg-slate-100">
         <button
@@ -71,7 +72,7 @@ export const Slider = () => {
               >
                 <img
                   onClick={() => navigate(`/product/${item._id}`)}
-                  className="w-[200px] h-[210px] rounded-t-lg"
+                  className="h-[210px] w-full rounded-t-lg"
                   src={item.img}
                 />
                 <p className="text-center mt-1">{item.title}</p>

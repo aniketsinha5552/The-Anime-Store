@@ -31,12 +31,12 @@ export const Home = () => {
             })}
           </select>
 
-          <select >
+          {/* <select >
            <option value={0}>Shop By Category</option>
             <option value={1}>Apparel</option>
             <option value={2}>Key Chains</option>
             <option value={3}>Posters</option>
-          </select>
+          </select> */}
       </div>
       <div>
         <Carousel anime={animeList} />
