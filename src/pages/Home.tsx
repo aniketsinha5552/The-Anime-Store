@@ -35,14 +35,14 @@ export const Home = () => {
     <div>
       {/* <Header /> */}
       <div className="flex flex-row justify-evenly p-2" id="nav">
-          <select >
+          {/* <select >
            <option value={0}>Shop By Anime</option>
             {animeList.map((item:any) => {
               return (
                 <option key={item.id} value={item.id}>{item.title}</option>
               )
             })}
-          </select>
+          </select> */}
 
           {/* <select >
            <option value={0}>Shop By Category</option>
@@ -53,8 +53,8 @@ export const Home = () => {
       </div>
       <div>
         <Carousel anime={animeList} />
-        <Slider products={apparel} name="Apparel"/>
-        <Slider products={nonApparel} name="Non Apparel"/>
+        {apparel && <Slider products={apparel} name="Apparel"/>}
+        {nonApparel && <Slider products={nonApparel} name="Non Apparel"/>}
       </div>
     </div>
   );

@@ -34,7 +34,7 @@ export const Product = () => {
   return (
     <div className='flex flex-row justify-start p-10'>
       <div id="productLeft" className=''>
-          <img src={product.img} alt="" className='h-[600px] w-[550px] border-2 border-slate-400 rounded-md'/>
+          <img src={product.img} alt="" className='h-[600px] min-w-[550px] border-2 border-slate-400 rounded-md'/>
       </div>
       <div className='bg-slate-100 flex-auto p-10 relative'>
           <h1 className='text-2xl text-center mb-10'>{product.title}</h1>
