@@ -7,24 +7,10 @@ import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
 import Card from "./Card";
 
-export const Slider = () => {
+export const Slider = ({products,name}:any) => {
   const navigate = useNavigate();
   const scrollRef = useRef<any>(null);
   const dispatch= useDispatch()
-
-  const [products, setProducts] = useState<any>([]);
-
-  const getProducts = async () => {
-    try {
-      const res = await publicRequest.get("/products");
-      setProducts(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getProducts();
-  }, []);
 
   const scrollLeft = () => {
     scrollRef.current.scrollLeft -= 200;
@@ -45,19 +31,19 @@ export const Slider = () => {
     alert("Product Added")
   }
   return (
-    <div className="ml-3 mr-3 mt-5">
+    <div className="ml-5 mr-5 mt-5">
       <div className="flex flex-row justify-between ml-5 mr-5">
-        {/* <p className="text-2xl font-bold">Trending</p> */}
+        <p className="text-2xl font-bold text-slate-800 ml-5 mb-2">{name}</p>
         {/* <button>View all</button> */}
       </div>
-      <div className="flex flex-row relative w-full bg-slate-100">
+      <div className="flex flex-row relative w-full bg-slate-200 rounded-md">
         <button
-          className="absolute left-0 bottom-1/2 z-20"
+          className="absolute left-1 bottom-1/2 z-20"
           onClick={scrollLeft}
         >
           <Icon
             style={{ fontSize: "30px", color: "gray" }}
-            icon="icon-park-outline:left-c"
+            icon="ps:left"
           />
         </button>
         <div
@@ -70,12 +56,12 @@ export const Slider = () => {
           })}
         </div>
         <button
-          className="absolute right-0 bottom-1/2 z-20"
+          className="absolute right-1 bottom-1/2 z-20"
           onClick={scrollRight}
         >
           <Icon
             style={{ fontSize: "30px", color: "gray" }}
-            icon="icon-park-outline:right-c"
+            icon="ps:right"
           />
         </button>
       </div>

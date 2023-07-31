@@ -29,14 +29,14 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-slate-200 flex flex-row justify-between p-3 align-middle">
+    <div className="bg-cyan-900 flex flex-row justify-between p-3 align-middle text-white">
       <p
         onClick={() => navigate(`/`)}
         className="text-2xl ml-5 hover:cursor-pointer"
       >
         The Anime Store.
       </p>
-      <p>
+      {/* <p>
           <input
             className="pl-1 w-[350px] rounded-s-lg border-0 h-full"
             type="text"
@@ -45,7 +45,7 @@ const Header = () => {
           <button className=" bg-slate-400 h-full pl-2 pr-2 mb-1 text-white text-center align-middle rounded-e-lg">
             <Icon icon="basil:search-outline" />
           </button>
-        </p>
+        </p> */}
       <div className="flex flex-row mt-1 pr-4">    
         <button onClick={() => navigate(`/checkout`)} className="p-2 relative">
           <div className="absolute top-0 right-0 text-[10px] bg-red-600 text-white rounded-lg p-0 w-4 h-4">

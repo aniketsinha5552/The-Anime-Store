@@ -15,8 +15,21 @@ export const Home = () => {
       console.log(error)
     }
   }
+  const [apparel, setApparel] = useState<any>([])
+  const [nonApparel, setNonApparel] = useState<any>([])
+  const getApparel = async() => {
+    try {
+      const res = await publicRequest.get("/products?category=apparel")
+      const res2 = await publicRequest.get("/products?category=non apparel")
+      setNonApparel(res2.data)
+      setApparel(res.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   useEffect(() => {
     getAmineList()
+    getApparel()
   }, [])
   return (
     <div>
@@ -40,9 +53,9 @@ export const Home = () => {
       </div>
       <div>
         <Carousel anime={animeList} />
-        <Slider/>
+        <Slider products={apparel} name="Apparel"/>
+        <Slider products={nonApparel} name="Non Apparel"/>
       </div>
-      <h4>Footer</h4>
     </div>
   );
 };

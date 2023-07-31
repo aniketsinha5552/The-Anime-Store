@@ -34,11 +34,6 @@ const Checkout = () => {
                     <p className="text-lg mb-2">
                       <strong>Color:</strong>{" "}
                       <span
-                        style={{
-                          color: product.color,
-                          backgroundColor: product.color,
-                          padding: "2px",
-                        }}
                       >
                         {product.color}
                       </span>

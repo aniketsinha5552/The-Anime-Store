@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3001/api";
+const baseUrl = process.env.REACT_APP_SERVER_URL;
+console.log(baseUrl)
 const persistRoot:any= localStorage.getItem("persist:root")
 const token = persistRoot && JSON.parse(JSON.parse(persistRoot).user).currentUser?.accessToken;
 

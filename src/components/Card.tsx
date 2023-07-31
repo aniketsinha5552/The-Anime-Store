@@ -23,7 +23,7 @@ const Card = (props:any) => {
       }
   return (
          <div
-                className="h-[300px] min-w-[200px] bg-slate-200 m-2 rounded-lg border-2 border-slate-400 hover:scale-105 transition duration-500 ease-in-out"
+                className="h-[320px] min-w-[230px] max-w-[230px] bg-slate-100 m-2 rounded-lg border-2 border-slate-400 hover:scale-105 transition duration-500 ease-in-out"
               >
                 <img
                   onClick={() => navigate(`/product/${item._id}`)}
