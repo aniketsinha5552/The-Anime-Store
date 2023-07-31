@@ -3,9 +3,10 @@ import { Carousel } from "../components/Carousel";
 import { Slider } from "../components/Slider";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../requestMethods";
-
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
+  const navigate = useNavigate();
   const [animeList, setAnimeList] = useState<any>([])
   const getAmineList = async() => {
     try {
@@ -35,14 +36,14 @@ export const Home = () => {
     <div>
       {/* <Header /> */}
       <div className="flex flex-row justify-evenly p-2" id="nav">
-          {/* <select >
+          <select className="p-1 bg-slate-200" onChange={(e)=>navigate(`/anime/${e.target.value}`)}>
            <option value={0}>Shop By Anime</option>
-            {animeList.map((item:any) => {
+            {animeList.map((item:any,idx:any) => {
               return (
-                <option key={item.id} value={item.id}>{item.title}</option>
+                <option key={idx} value={item._id}>{item.title}</option>
               )
             })}
-          </select> */}
+          </select>
 
           {/* <select >
            <option value={0}>Shop By Category</option>
