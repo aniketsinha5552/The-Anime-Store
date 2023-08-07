@@ -1,5 +1,5 @@
 # An Ecommerce Website for Anime Fans 🚀🚀
-## https://the-anime-store.netlify.app/
+## https://the-anime-store.vercel.app/
 
 A MERN stack ecommerce website with all the essential features.
 
