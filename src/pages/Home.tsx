@@ -35,7 +35,7 @@ export const Home = () => {
   return (
     <div>
       {/* <Header /> */}
-      {animeList.length > 0 ?
+      
       <div className="flex flex-row justify-evenly p-2" id="nav">
           <select className="p-1 bg-slate-200" onChange={(e)=>navigate(`/anime/${e.target.value}`)}>
            <option value={0}>Shop By Anime</option>
@@ -53,7 +53,6 @@ export const Home = () => {
             <option value={3}>Posters</option>
           </select> */}
       </div>
-      : <>..Some Error Occured</>}
       <div>
         <Carousel anime={animeList} />
         {apparel && <Slider products={apparel} name="Apparel"/>}
