@@ -8,6 +8,7 @@ import Header from './components/Header';
 import { useSelector } from 'react-redux';
 import { User } from './pages/User';
 import { Admin } from './pages/Admin';
+import { Footer } from './components/Footer';
 
 function App() {
   const user = useSelector((state:any) => state.user?.currentUser?.user)
@@ -25,6 +26,7 @@ function App() {
           <Route path="/user" element={<User />} />
           <Route path="/admin" element={user?.isAdmin? <Admin/> :<Navigate to="/"/>}/>
         </Routes>
+        <Footer/>
       </Router>
     </div>
   );

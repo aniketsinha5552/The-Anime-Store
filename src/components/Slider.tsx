@@ -36,7 +36,7 @@ export const Slider = ({products,name}:any) => {
         <p className="text-2xl font-bold text-slate-800 ml-5 mb-2">{name}</p>
         {/* <button>View all</button> */}
       </div>
-       <div className="flex flex-row relative w-full bg-slate-200 rounded-md">
+       <div className="flex flex-row relative w-full rounded-md">
         <button
           className="absolute left-1 bottom-1/2 z-20"
           onClick={scrollLeft}

@@ -1,14 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const carouselStyle = {
-  backgroundImage: "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  // filter: "blur(8px)",
-  // webkitFilter: "blur(8px)",
-}
 
 export const Carousel = (props: any) => {
   const anime = props.anime.slice(0, 4);
@@ -16,8 +8,7 @@ export const Carousel = (props: any) => {
   return (
     <div
       id="carousel"
-      style={carouselStyle}
-      className="min-w-full h-screen-4/5 flex flex-row relative overflow-x-scroll"
+      className="h-screen-4/5 flex flex-row relative overflow-x-scroll bg-slate-200 lg:justify-center"
     >
       {anime.map((item: any,idx:any) => {
         return (

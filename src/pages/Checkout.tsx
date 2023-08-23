@@ -7,6 +7,7 @@ import { deleteProduct } from "../redux/cartRedux";
 const Checkout = () => {
   const cart = useSelector((state: any) => state.cart);
   const products = cart.products;
+  console.log(cart)
   const total = cart.total;
   const dispatch = useDispatch();
   const deleteFromCart = (id: any) => {
