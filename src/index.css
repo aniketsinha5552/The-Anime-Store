@@ -10,16 +10,20 @@ body {
 }
 
 body::-webkit-scrollbar{
-  width: 0.5rem;
+  width: 1rem;
 }
 body::-webkit-scrollbar-track{
   background: white;
 }
 body::-webkit-scrollbar-thumb{
-  background: rgb(80, 77, 77);
+  background: rgb(138, 134, 134);
 }
 
 #slider::-webkit-scrollbar{
    display: none;
    scroll-behavior: smooth;
+}
+
+#carousel::-webkit-scrollbar{
+  display: none;
 }

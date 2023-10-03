@@ -3,30 +3,39 @@ import { useSelector } from "react-redux";
 import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 import { deleteProduct } from "../redux/cartRedux";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
   const cart = useSelector((state: any) => state.cart);
+  const user= useSelector((state:any)=>state.user)
   const products = cart.products;
-  console.log(cart)
   const total = cart.total;
+
+  const navigate= useNavigate()
   const dispatch = useDispatch();
   const deleteFromCart = (id: any) => {
     dispatch(deleteProduct(id));
   };
+  const proceedToCheckout=()=>{
+    if(!user.currentUser){
+      alert('Login to proceed')
+      navigate('/login')
+    }
+  }
   return (
-    <div className="p-2">
+    <div className="p-2 min-h-[70vh]">
       <h1 className="text-center text-2xl">Checkout</h1>
-      <div className="flex justify-center relative p-10">
-        <div className="w-[700px]">
+      <div className="flex justify-center relative p-10 flex-col md:flex-row gap-10">
+        <div className="flex-auto">
           {products.map((product: any) => {
             return (
-              <div className="bg-slate-200 p-5 shadow-lg mb-5 flex justify-start relative">
+              <div key={product._id} className="bg-slate-200 p-5 shadow-lg mb-5 flex flex-col justify-start relative md:flex-row">
                 <img
                   src={product.img}
                   alt={product.name}
-                  className="min-w-[200px] h-[200px]"
+                  className="md:min-w-[200px] md:h-[200px] w-[250px] h-[250px]"
                 />
-                <div className="ml-10 relative w-full">
+                <div className="relative w-full md:ml-8 mt:2">
                   <p className="text-xl mb-2">{product.title}</p>
                   <p className="text-xl mb-2">
                     <strong>Rs.</strong> {product.price}
@@ -62,11 +71,11 @@ const Checkout = () => {
             );
           })}
         </div>
-        <div className="bg-slate-200 p-5 shadow-lg w-[200px] h-[200px] grid place-items-center absolute right-10 top-10">
+        <div className="bg-slate-200 p-5 shadow-lg md:w-[200px] md:h-[200px] grid place-items-center flex-1">
           <p>
             <strong>Total:</strong> Rs {total}
           </p>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <button onClick={proceedToCheckout} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Proceed
           </button>
         </div>
