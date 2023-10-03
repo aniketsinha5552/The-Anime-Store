@@ -47,7 +47,7 @@ export const Login = () => {
             <input className='w-full p-1 rounded-md border-0 h-10 mb-10' type="password" placeholder='Password' {...register("password",{required:true})}/>
             <button className='bg-green-500 p-1 rounded-md hover:bg-green-400 disabled:bg-slate-500' disabled={isFetching}>Login</button>
         </form>
-        {/* <p className='text-center'>Not a user? <em >Register</em></p> */}
+        {error &&  <p className='text-center text-red-500'>Login Error!</p> }
         </div>
 
         <div className='bg-slate-200 h-[500px] w-[400px] rounded-md p-4 pt-10 ml-10'>

@@ -29,7 +29,7 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-slate-400 flex flex-col md:flex-row justify-between p-3 align-middle overflow-hidden">
+    <div className="bg-slate-400 flex flex-col md:flex-row justify-between p-3 align-middle overflow-hidden w-full">
       <p
         onClick={() => navigate(`/`)}
         className="text-2xl ml-5 hover:cursor-pointer"

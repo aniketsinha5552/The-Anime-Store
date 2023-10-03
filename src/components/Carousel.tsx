@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 
 export const Carousel = (props: any) => {
-  const anime = props.anime.slice(0, 4);
+  const anime = props.anime.slice();
   const navigate= useNavigate()
   return (
     <div
       id="carousel"
-      className="h-screen-4/5 flex flex-row relative overflow-x-scroll bg-slate-200 lg:justify-center"
+      className="h-screen-4/5 flex flex-row relative overflow-x-scroll bg-slate-200 lg:justify-center md:overflow-x-hidden"
     >
       {anime.map((item: any,idx:any) => {
         return (

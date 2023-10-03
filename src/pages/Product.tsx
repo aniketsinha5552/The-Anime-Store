@@ -33,9 +33,9 @@ export const Product = () => {
   }
 
   return (
-    <div className='flex flex-row justify-start p-10'>
+    <div className='flex flex-col justify-start p-10 md:flex-row overflow-hidden'>
       <div id="productLeft" className=''>
-          <img src={product.img} alt="" className='h-[600px] min-w-[550px] border-2 border-slate-400 rounded-md'/>
+          <img src={product.img} alt="" className='h-[390px] min-w-[330px] border-2 border-slate-400 rounded-md md:h-[600px] md:min-w-[550px]'/>
       </div>
       <div className='bg-slate-100 flex-auto p-10 relative'>
           <h1 className='text-2xl text-center mb-10'>{product.title}</h1>
@@ -48,11 +48,11 @@ export const Product = () => {
           <p className='mt-3'>
           {product.categories?.map((item:any) => {
             return (
-              <span key={item._id} className='text-sm bg-blue-500 rounded-xl w-fit p-2 mr-2 text-white'>{item}</span> 
+              <span key={item._id} className='text-sm bg-blue-300 rounded-xl w-fit p-2 mr-2 text-white'>{item}</span> 
             )
           })}
           </p>
-          <button onClick={addToCart} className='bg-blue-500 text-white p-2 rounded-lg w-48 absolute bottom-20 left-1/3'>Add to Cart</button>
+          <button onClick={addToCart} className='bg-blue-500 text-white p-2 mt-10 rounded-lg w-48 bottom-20 left-1/3'>Add to Cart</button>
       </div>
     </div>
   )
